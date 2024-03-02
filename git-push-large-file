@@ -1,0 +1,5 @@
+#1 (precondition:) git lfs install
+#2 git lfs track file-name
+#3 git add .
+#4 git commit
+#5 git push
