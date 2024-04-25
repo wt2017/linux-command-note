@@ -1,0 +1,1 @@
+scp -i C:\Users\wyou\.ssh\id_ecdsa .\go1.22.2.linux-amd64.tar.gz wyou@10.181.199.171:/home/wyou/go1.22.2.linux-amd64.tar.gz
