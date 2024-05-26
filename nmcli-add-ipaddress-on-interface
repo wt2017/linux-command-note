@@ -1,0 +1,2 @@
+1# sudo nmcli connection modify lo ipv4.addresses 172.16.10.20/32 ipv4.method manual
+2# sudo nmcli connection modify lo connection.autoconnect yes // ip address added by step #1 can't be kept w/o this command
