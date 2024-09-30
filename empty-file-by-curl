@@ -1,0 +1,4 @@
+# -L is critical if the address is redirected, e.g.,
+curl -L -O https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+
+
