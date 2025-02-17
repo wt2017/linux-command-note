@@ -1,5 +1,6 @@
-#1 sudo perf record -a -g -e cpu-clock -o udp.data -- iperf3 -c 192.168.124.248 -u -t 10
+#1.1 sudo perf record -a -g -e cpu-clock -o vxlan.data -- iperf3 -c 192.168.124.248 -u -t 10      -> monitor single process
+#1.2 sudo perf record -a -g -e cpu-clock -o vxlan.data -- sleep 10                                -> monitor 10s
 
-#2 sudo perf script -i /home/vvwyou/data/perf-udp/udp.data | ./stackcollapse-perf.pl > out.udp-folded
+#2 sudo perf script -i vxlan.data | /home/vvwyou/projects/FlameGraph/stackcollapse-perf.pl > vxlan.folded
 
-#3 ./flamegraph.pl out.udp-folded > udp-flamegraph.svg
+#3 /home/vvwyou/projects/FlameGraph/flamegraph.pl vxlan.folded > vxlan.svg
