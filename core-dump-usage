@@ -1,0 +1,40 @@
+#1 ulimit -c
+unlimited
+
+#2 cat /proc/sys/kernel/core_pattern
+|/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h
+
+#3 coredumpctl list --since="1 hour ago" | tail -10
+TIME                             PID  UID  GID SIG     COREFILE EXE                    SIZE
+Mon 2025-08-04 11:24:49 EEST 1915081 1000 1000 SIGSEGV present  /home/wyou/ai/SimAI-Noah/astra-sim-alibabacloud/extern/network_backend/ns3-interface/simulation/build/scratch/ns3.36.1-AstraSimNetwork-debug 12.0M 
+
+#4 coredumpctl info 1915081
+           PID: 1915081 (SimAI_simulator)
+           UID: 1000 (wyou)
+           GID: 1000 (wyou)
+        Signal: 11 (SEGV)
+     Timestamp: Mon 2025-08-04 11:24:41 EEST (5min ago)
+  Command Line: ./bin/SimAI_simulator -t 16 -w ./example/microAllReduce.txt -n ./Spectrum-X_128g_8gps_1>
+    Executable: /home/wyou/ai/SimAI-Noah/astra-sim-alibabacloud/extern/network_backend/ns3-interface/si>
+ Control Group: /user.slice/user-1000.slice/session-55.scope
+          Unit: session-55.scope
+         Slice: user-1000.slice
+       Session: 55
+     Owner UID: 1000 (wyou)
+       Boot ID: e2819997c01b4d0aa9f2cec58919861e
+    Machine ID: 3f8d0ad6194047f2b3a03d3d6b9eb502
+      Hostname: wyou-self-kernel.novalocal
+       Storage: /var/lib/systemd/coredump/core.SimAI_simulator.1000.e2819997c01b4d0aa9f2cec58919861e.19>
+  Size on Disk: 12.0M
+       Message: Process 1915081 (SimAI_simulator) of user 1000 dumped core.
+                
+                Stack trace of thread 1915081:
+                #0  0x00007fe0e1091431 _IO_fwrite (libc.so.6 + 0x83431)
+                #1  0x000000000043d810 n/a (n/a + 0x0)
+                #2  0x0000000000435824 n/a (n/a + 0x0)
+                #3  0x0000000000439f25 n/a (n/a + 0x0)
+                #4  0x000000000043a50a n/a (n/a + 0x0)
+                #5  0x00007fe0e1038088 __libc_start_call_main (libc.so.6 + 0x2a088)
+                #6  0x00007fe0e103814b __libc_start_main@@GLIBC_2.34 (libc.so.6 + 0x2a14b)
+                #7  0x000000000042af25 n/a (n/a + 0x0)
+                ELF object binary architecture: AMD x86-64
