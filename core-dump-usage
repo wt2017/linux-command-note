@@ -1,5 +1,12 @@
-#1 ulimit -c
+#1.1 ulimit -c
 unlimited
+
+#1.2 
+Purpose	        Cmd
+store in cache            export DEBUGINFOD_CACHE_PATH=...
+disable temporary         export DEBUGINFOD_URLS=""
+disable permanently       add ' export DEBUGINFOD_URLS="" ' to ~/.bashrc
+disable in gdb            set debuginfod enabled off
 
 #2 cat /proc/sys/kernel/core_pattern
 |/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h
